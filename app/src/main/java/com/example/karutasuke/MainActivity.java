@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.karutasuke.boundary.FudaPage;
+import com.example.karutasuke.boundary.KikiwakePage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,5 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.open_fuda_page).setOnClickListener(
                 v -> startActivity(new Intent(this, FudaPage.class)));
+        findViewById(R.id.open_kikiwake_page).setOnClickListener(
+                v -> startActivity(new Intent(this, KikiwakePage.class)));
     }
 }

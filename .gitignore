@@ -34,3 +34,6 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Reader audio (not ours to redistribute)
+app/src/main/assets/audio/

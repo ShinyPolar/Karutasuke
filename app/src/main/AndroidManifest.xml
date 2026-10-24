@@ -29,6 +29,10 @@
             android:name=".boundary.FudaDetailPage"
             android:exported="false"
             android:screenOrientation="landscape" />
+        <activity
+        android:name=".boundary.KikiwakePage"
+        android:exported="false"
+        android:screenOrientation="landscape" />
 
     </application>
 

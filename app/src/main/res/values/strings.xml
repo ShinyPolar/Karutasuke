@@ -4,6 +4,54 @@
     <!-- HomePage -->
     <string name="home_title">かるたすけ</string>
     <string name="open_fuda_page">札一覧</string>
+    <string name="open_kikiwake_page">聞き分け</string>
+
+    <!-- KikiwakePage -->
+    <string name="kikiwake_set">札</string>
+    <string name="kikiwake_set_size">%1$d枚</string>
+    <string name="kikiwake_set_size_limited">%1$d枚（場に%2$d枚）</string>
+    <string name="kikiwake_memorization">暗記時間</string>
+    <string name="kikiwake_memorizing">暗記 %1$d:%2$02d</string>
+    <string name="kikiwake_memorize_done">暗記終了</string>
+    <!-- Keep these two arrays the same length and order -->
+    <string-array name="memorization_labels">
+        <item>なし</item>
+        <item>30秒</item>
+        <item>1分</item>
+        <item>2分</item>
+        <item>5分</item>
+        <item>10分</item>
+        <item>15分（試合と同じ）</item>
+    </string-array>
+    <integer-array name="memorization_seconds">
+        <item>0</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>300</item>
+        <item>600</item>
+        <item>900</item>
+    </integer-array>
+    <string name="kikiwake_reading_style">読み方</string>
+    <string name="kikiwake_style_kaminoku">上の句のみ</string>
+    <string name="kikiwake_style_match">試合形式（序歌・下の句あり）</string>
+    <string name="kikiwake_karafuda">空札（場にない札の読み）</string>
+    <string name="kikiwake_karafuda_count">空札 %1$d枚</string>
+    <string name="kikiwake_start">はじめる</string>
+    <string name="kikiwake_stop">やめる</string>
+    <string name="kikiwake_status">残り %1$d枚 ・ お手つき %2$d</string>
+    <string name="kikiwake_audio_missing">音声ファイルがありません: %1$s</string>
+
+    <!-- ResultOverlay -->
+    <string name="result_title">結果</string>
+    <string name="result_time">時間: %1$d分%2$02d秒</string>
+    <string name="result_taken">取った札: %1$d / %2$d枚</string>
+    <string name="result_clean">お手つきなし: %1$d枚</string>
+    <string name="result_otetsuki">お手つき: %1$d回</string>
+    <string name="result_average">平均反応時間: %1$s</string>
+    <string name="result_slowest">遅かった札: %1$s</string>
+    <string name="result_retry">もう一度</string>
+    <string name="result_close">終了</string>
 
     <!-- FudaPage -->
     <string name="sort_label">並べ替え</string>

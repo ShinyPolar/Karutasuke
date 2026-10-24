@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/kikiwake_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".boundary.KikiwakePage">
+
+    <!-- Setup step -->
+    <ScrollView
+        android:id="@+id/setup_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open_kikiwake_page"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall" />
+
+            <TextView
+                style="@style/FudaDetail.Label"
+                android:text="@string/kikiwake_set" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/set_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="48dp" />
+
+                <TextView
+                    android:id="@+id/set_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    tools:text="7枚" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/FudaDetail.Label"
+                android:text="@string/kikiwake_reading_style" />
+
+            <RadioGroup
+                android:id="@+id/reading_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/style_kaminoku">
+
+                <RadioButton
+                    android:id="@+id/style_kaminoku"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kikiwake_style_kaminoku" />
+
+                <RadioButton
+                    android:id="@+id/style_match"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kikiwake_style_match" />
+            </RadioGroup>
+
+            <TextView
+                style="@style/FudaDetail.Label"
+                android:text="@string/kikiwake_karafuda" />
+
+            <TextView
+                android:id="@+id/karafuda_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                tools:text="空札 0枚" />
+
+            <SeekBar
+                android:id="@+id/karafuda_seek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:minHeight="48dp" />
+
+            <TextView
+                style="@style/FudaDetail.Label"
+                android:text="@string/kikiwake_memorization" />
+
+            <Spinner
+                android:id="@+id/memorization_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp" />
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/kikiwake_start" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Practice: the field fills the screen; the status bar sits in the gap between the two 陣. -->
+    <FrameLayout
+        android:id="@+id/practice_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <com.example.karutasuke.boundary.FieldView
+            android:id="@+id/field"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="?attr/textAppearanceTitleSmall"
+                android:textColor="@color/fuda_ink"
+                tools:text="残り 7枚 ・ お手つき 0" />
+
+            <Button
+                android:id="@+id/action_button"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="0dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:textColor="@color/fuda_ink"
+                tools:text="@string/kikiwake_stop" />
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

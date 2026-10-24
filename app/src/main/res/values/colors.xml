@@ -7,4 +7,9 @@
     <color name="fuda_paper">#FFFBF7EC</color>
     <color name="fuda_edge">#FF2E6B45</color>
     <color name="fuda_ink">#FF1A1A1A</color>
+    <color name="fuda_wrong">#66D32F2F</color>
+
+    <!-- Playing field -->
+    <color name="field_tatami">#FFD8CC9A</color>
+    <color name="field_line">#33000000</color>
 </resources>
