@@ -23,12 +23,14 @@ public final class Fuda {
     private final List<String> torifuda;    // the 3 lines printed on the 取り札
     private final String kaminokuAudio;     // asset path, e.g. "audio/kaminoku/001.mp3"
     private final String shimonokuAudio;
+    private final String note;              // built-in note from fuda.json ("" if none)
 
     public Fuda(int number, String poet,
                 String kaminoku, String kaminokuHiragana,
                 String shimonoku, String shimonokuHiragana,
                 String kimariji, List<String> torifuda,
-                String kaminokuAudio, String shimonokuAudio) {
+                String kaminokuAudio, String shimonokuAudio,
+                String note) {
         this.number = number;
         this.poet = poet;
         this.kaminoku = kaminoku;
@@ -39,6 +41,7 @@ public final class Fuda {
         this.torifuda = Collections.unmodifiableList(torifuda);
         this.kaminokuAudio = kaminokuAudio;
         this.shimonokuAudio = shimonokuAudio;
+        this.note = note;
     }
 
     public int getNumber() { return number; }
@@ -51,6 +54,12 @@ public final class Fuda {
     public List<String> getTorifuda() { return torifuda; }
     public String getKaminokuAudio() { return kaminokuAudio; }
     public String getShimonokuAudio() { return shimonokuAudio; }
+
+    /**
+     * The built-in note shipped in fuda.json. Notes the user writes in the app are stored
+     * separately; use FudaNoteManager.getNote() to get the note that should be shown.
+     */
+    public String getNote() { return note; }
 
     /** 1 for 一字決まり, up to 6 for 大山札. Derived, so it can never disagree with kimariji. */
     public int getKimarijiLength() { return kimariji.length(); }

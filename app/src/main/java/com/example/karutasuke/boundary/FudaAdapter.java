@@ -18,7 +18,16 @@ import java.util.List;
 /** Shows one 取り札 card per Fuda in FudaPage's grid. */
 class FudaAdapter extends RecyclerView.Adapter<FudaAdapter.Row> {
 
+    interface OnFudaClickListener {
+        void onFudaClick(Fuda fuda);
+    }
+
     private final List<Fuda> items = new ArrayList<>();
+    private final OnFudaClickListener listener;
+
+    FudaAdapter(OnFudaClickListener listener) {
+        this.listener = listener;
+    }
 
     @SuppressLint("NotifyDataSetChanged") // the whole list is re-sorted, so every row changes
     void submit(List<Fuda> fuda) {
@@ -31,7 +40,12 @@ class FudaAdapter extends RecyclerView.Adapter<FudaAdapter.Row> {
     @Override
     public Row onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fuda, parent, false);
-        return new Row(view);
+        Row row = new Row(view);
+        view.setOnClickListener(v -> {
+            int position = row.getBindingAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) listener.onFudaClick(items.get(position));
+        });
+        return row;
     }
 
     @Override

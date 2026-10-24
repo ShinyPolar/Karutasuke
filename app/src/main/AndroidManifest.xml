@@ -25,6 +25,10 @@
             android:exported="false"
             android:label="@string/open_fuda_page"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".boundary.FudaDetailPage"
+            android:exported="false"
+            android:screenOrientation="landscape" />
 
     </application>
 

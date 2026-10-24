@@ -47,7 +47,7 @@ public class FudaPage extends AppCompatActivity {
 
         catalog = FudaCatalog.getInstance(this);
 
-        adapter = new FudaAdapter();
+        adapter = new FudaAdapter(f -> startActivity(FudaDetailPage.newIntent(this, f.getNumber())));
         list = findViewById(R.id.fuda_list);
         // As many cards per row as fit at about CARD_WIDTH_DP each (more in landscape).
         int columns = Math.max(MIN_COLUMNS, getResources().getConfiguration().screenWidthDp / CARD_WIDTH_DP);

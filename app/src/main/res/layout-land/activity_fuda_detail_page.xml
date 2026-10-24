@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Landscape: card on the left, text on the right. Android picks this file automatically. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fuda_detail_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".boundary.FudaDetailPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:padding="24dp">
+
+        <com.example.karutasuke.boundary.TorifudaView
+            android:id="@+id/detail_card"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp" />
+
+        <include
+            layout="@layout/fuda_detail_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+</ScrollView>

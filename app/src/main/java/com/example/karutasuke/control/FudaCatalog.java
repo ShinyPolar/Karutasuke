@@ -77,7 +77,8 @@ public final class FudaCatalog {
                     o.getString("kimariji"),
                     torifuda,
                     "audio/kaminoku/" + audioName,
-                    "audio/shimonoku/" + audioName));
+                    "audio/shimonoku/" + audioName,
+                    o.optString("note", "")));
         }
         if (list.size() != FUDA_COUNT) {
             throw new JSONException("Expected " + FUDA_COUNT + " fuda but found " + list.size());

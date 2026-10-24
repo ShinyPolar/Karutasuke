@@ -11,6 +11,15 @@
     <string name="sort_desc">降順</string>
     <!-- Under each card: 歌番号 and 決まり字 -->
     <string name="fuda_caption">%1$d  %2$s</string>
+
+    <!-- FudaDetailPage -->
+    <string name="detail_number">第%1$d首</string>
+    <string name="detail_kimariji_length">%1$d字決まり</string>
+    <string name="detail_kaminoku">上の句</string>
+    <string name="detail_shimonoku">下の句</string>
+    <string name="detail_poet">作者</string>
+    <string name="detail_note">メモ</string>
+    <string name="detail_note_hint">この札についてのメモ</string>
     <!-- Must stay in the same order as the SortKey enum -->
     <string-array name="sort_keys">
         <item>歌番号</item>
