@@ -13,13 +13,19 @@
         android:theme="@style/Theme.Karutasuke">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".boundary.FudaPage"
+            android:exported="false"
+            android:label="@string/open_fuda_page"
+            android:screenOrientation="landscape" />
+
     </application>
 
 </manifest>

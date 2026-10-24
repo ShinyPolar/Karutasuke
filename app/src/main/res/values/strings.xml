@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Karutasuke</string>
+
+    <!-- HomePage -->
+    <string name="home_title">かるたすけ</string>
+    <string name="open_fuda_page">札一覧</string>
+
+    <!-- FudaPage -->
+    <string name="sort_label">並べ替え</string>
+    <string name="sort_asc">昇順</string>
+    <string name="sort_desc">降順</string>
+    <!-- Must stay in the same order as the SortKey enum -->
+    <string-array name="sort_keys">
+        <item>歌番号</item>
+        <item>決まり字</item>
+        <item>上の句</item>
+        <item>下の句</item>
+    </string-array>
 </resources>
