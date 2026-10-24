@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- 取り札 -->
+    <color name="fuda_paper">#FFFBF7EC</color>
+    <color name="fuda_edge">#FF2E6B45</color>
+    <color name="fuda_ink">#FF1A1A1A</color>
 </resources>

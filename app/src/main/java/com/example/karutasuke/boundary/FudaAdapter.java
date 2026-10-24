@@ -15,7 +15,7 @@ import com.example.karutasuke.entity.Fuda;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Shows one row per Fuda in FudaPage's list. */
+/** Shows one 取り札 card per Fuda in FudaPage's grid. */
 class FudaAdapter extends RecyclerView.Adapter<FudaAdapter.Row> {
 
     private final List<Fuda> items = new ArrayList<>();
@@ -37,28 +37,22 @@ class FudaAdapter extends RecyclerView.Adapter<FudaAdapter.Row> {
     @Override
     public void onBindViewHolder(@NonNull Row row, int position) {
         Fuda f = items.get(position);
-        row.number.setText(String.valueOf(f.getNumber()));
-        row.kimariji.setText(f.getKimariji());
-        row.kaminoku.setText(f.getKaminoku());
-        row.shimonoku.setText(f.getShimonoku());
-        row.torifuda.setText(String.join(" ", f.getTorifuda()));
-        row.poet.setText(f.getPoet());
+        row.card.setLines(f.getTorifuda());
+        row.caption.setText(row.caption.getContext().getString(
+                R.string.fuda_caption, f.getNumber(), f.getKimariji()));
     }
 
     @Override
     public int getItemCount() { return items.size(); }
 
     static class Row extends RecyclerView.ViewHolder {
-        final TextView number, kimariji, kaminoku, shimonoku, torifuda, poet;
+        final TorifudaView card;
+        final TextView caption;
 
         Row(View v) {
             super(v);
-            number = v.findViewById(R.id.fuda_number);
-            kimariji = v.findViewById(R.id.fuda_kimariji);
-            kaminoku = v.findViewById(R.id.fuda_kaminoku);
-            shimonoku = v.findViewById(R.id.fuda_shimonoku);
-            torifuda = v.findViewById(R.id.fuda_torifuda);
-            poet = v.findViewById(R.id.fuda_poet);
+            card = v.findViewById(R.id.fuda_card);
+            caption = v.findViewById(R.id.fuda_caption);
         }
     }
 }

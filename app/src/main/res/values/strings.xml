@@ -9,6 +9,8 @@
     <string name="sort_label">並べ替え</string>
     <string name="sort_asc">昇順</string>
     <string name="sort_desc">降順</string>
+    <!-- Under each card: 歌番号 and 決まり字 -->
+    <string name="fuda_caption">%1$d  %2$s</string>
     <!-- Must stay in the same order as the SortKey enum -->
     <string-array name="sort_keys">
         <item>歌番号</item>

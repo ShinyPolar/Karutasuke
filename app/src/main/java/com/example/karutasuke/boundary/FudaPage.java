@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.karutasuke.R;
@@ -22,6 +22,9 @@ import com.example.karutasuke.control.SortOrder;
 
 /** 札一覧: lists all 100 取り札 and lets the user sort them (FR-09, FR-10). */
 public class FudaPage extends AppCompatActivity {
+
+    private static final int CARD_WIDTH_DP = 90;
+    private static final int MIN_COLUMNS = 3;
 
     private FudaCatalog catalog;
     private FudaAdapter adapter;
@@ -46,7 +49,9 @@ public class FudaPage extends AppCompatActivity {
 
         adapter = new FudaAdapter();
         list = findViewById(R.id.fuda_list);
-        list.setLayoutManager(new LinearLayoutManager(this));
+        // As many cards per row as fit at about CARD_WIDTH_DP each (more in landscape).
+        int columns = Math.max(MIN_COLUMNS, getResources().getConfiguration().screenWidthDp / CARD_WIDTH_DP);
+        list.setLayoutManager(new GridLayoutManager(this, columns));
         list.setAdapter(adapter);
 
         Spinner sortSpinner = findViewById(R.id.sort_key);

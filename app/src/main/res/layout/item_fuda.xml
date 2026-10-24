@@ -1,75 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="?attr/materialCardViewOutlinedStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="12dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginEnd="12dp"
-    android:layout_marginBottom="4dp">
+    android:orientation="vertical"
+    android:padding="6dp">
 
-    <LinearLayout
+    <com.example.karutasuke.boundary.TorifudaView
+        android:id="@+id/fuda_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/fuda_caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="12dp">
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
+        tools:text="1  あきの" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/fuda_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="32dp"
-                android:textAppearance="?attr/textAppearanceLabelLarge"
-                tools:text="1" />
-
-            <TextView
-                android:id="@+id/fuda_kimariji"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textColor="?attr/colorPrimary"
-                android:textStyle="bold"
-                tools:text="あきの" />
-
-            <TextView
-                android:id="@+id/fuda_poet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceBodySmall"
-                tools:text="天智天皇" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/fuda_kaminoku"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:textAppearance="?attr/textAppearanceBodyMedium"
-            tools:text="秋の田の　かりほの庵の　苫をあらみ" />
-
-        <TextView
-            android:id="@+id/fuda_shimonoku"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBodyMedium"
-            tools:text="わが衣手は　露にぬれつつ" />
-
-        <TextView
-            android:id="@+id/fuda_torifuda"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textAppearance="?attr/textAppearanceBodySmall"
-            tools:text="わかころも てはつゆに ぬれつつ" />
-    </LinearLayout>
-
-</com.google.android.material.card.MaterialCardView>
+</LinearLayout>
