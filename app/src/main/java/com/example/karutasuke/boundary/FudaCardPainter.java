@@ -23,6 +23,7 @@ final class FudaCardPainter {
 
     private static final float BORDER_RATIO = 0.06f;    // green edge, as a fraction of width
     private static final float PADDING_RATIO = 0.10f;   // space between edge and text
+    private static final int STANDARD_CHARS = 5;   // kana per column on a normal 取り札
 
     private final Paint cardPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint borderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -59,24 +60,29 @@ final class FudaCardPainter {
         canvas.drawRoundRect(card, corner, corner, borderPaint);
 
         if (!lines.isEmpty()) {
-            int maxChars = 1;
-            for (String line : lines) maxChars = Math.max(maxChars, line.length());
             float pad = border + w * PADDING_RATIO;
             float columnWidth = (w - 2 * pad) / lines.size();
-            float cell = Math.min(columnWidth, (h - 2 * pad) / maxChars);
-            textPaint.setTextSize(cell * 0.92f);
-            Paint.FontMetrics fm = textPaint.getFontMetrics();
-            float baselineOffset = -(fm.ascent + fm.descent) / 2;
+            // Size the grid for a normal 5-kana column, so one long column doesn't shrink the whole card.
+            float cell = Math.min(columnWidth, (h - 2 * pad) / STANDARD_CHARS);
+            float columnHeight = cell * STANDARD_CHARS;
 
             for (int col = 0; col < lines.size(); col++) {
                 String line = lines.get(col);
+                // A column with more than 5 kana (e.g. いてつるかな) is squeezed into the same height.
+                float step = columnHeight / Math.max(line.length(), STANDARD_CHARS);
+                textPaint.setTextSize(Math.min(cell * 0.92f, step * 1.02f));
+                Paint.FontMetrics fm = textPaint.getFontMetrics();
+                float baselineOffset = -(fm.ascent + fm.descent) / 2;
+
                 float x = bounds.right - pad - columnWidth * (col + 0.5f);   // right to left
                 for (int i = 0; i < line.length(); i++) {
-                    float y = bounds.top + pad + cell * (i + 0.5f) + baselineOffset;
+                    float y = bounds.top + pad + step * (i + 0.5f) + baselineOffset;
                     canvas.drawText(line, i, i + 1, x, y, textPaint);
                 }
             }
         }
+
+    
 
         if (wrong) canvas.drawRoundRect(card, corner, corner, highlightPaint);
         canvas.restore();

@@ -33,6 +33,10 @@
         android:name=".boundary.KikiwakePage"
         android:exported="false"
         android:screenOrientation="landscape" />
+        <activity
+        android:name=".boundary.NagashiPage"
+        android:exported="false"
+        android:screenOrientation="landscape" />
 
     </application>
 

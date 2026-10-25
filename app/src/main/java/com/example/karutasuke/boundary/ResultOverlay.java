@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.example.karutasuke.R;
 import com.example.karutasuke.entity.FudaAttempt;
 import com.example.karutasuke.entity.PracticeResult;
+import com.example.karutasuke.entity.PracticeType;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
@@ -41,11 +42,16 @@ final class ResultOverlay {
         StringBuilder msg = new StringBuilder();
         long seconds = result.getDuration() / 1000;
         msg.append(activity.getString(R.string.result_time, seconds / 60, seconds % 60)).append('\n');
-        msg.append(activity.getString(R.string.result_taken, taken, totalOnBoard)).append('\n');
-        if (result.getScore() != null) {
-            msg.append(activity.getString(R.string.result_clean, result.getScore())).append('\n');
+        if (result.getMode() == PracticeType.NAGASHI) {
+            // 流し has no お手つき; just how many 札 went by.
+            msg.append(activity.getString(R.string.result_nagashi_count, taken));
+        } else {
+            msg.append(activity.getString(R.string.result_taken, taken, totalOnBoard)).append('\n');
+            if (result.getScore() != null) {
+                msg.append(activity.getString(R.string.result_clean, result.getScore())).append('\n');
+            }
+            msg.append(activity.getString(R.string.result_otetsuki, otetsuki));
         }
-        msg.append(activity.getString(R.string.result_otetsuki, otetsuki));
 
         if (!timed.isEmpty()) {
             msg.append('\n').append(activity.getString(R.string.result_average,

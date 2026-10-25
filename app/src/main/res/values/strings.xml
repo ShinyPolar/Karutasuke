@@ -42,7 +42,34 @@
     <string name="kikiwake_status">残り %1$d枚 ・ お手つき %2$d</string>
     <string name="kikiwake_audio_missing">音声ファイルがありません: %1$s</string>
 
+    <!-- NagashiPage -->
+    <string name="open_nagashi_page">流し</string>
+    <string name="nagashi_mode">表示</string>
+    <string name="nagashi_mode_manual">通常（スワイプするまで表示）</string>
+    <string name="nagashi_mode_recognition">瞬間認識（一定時間で隠れる）</string>
+    <string name="nagashi_display_duration">表示時間</string>
+    <string name="nagashi_show_kimariji">スワイプ後に決まり字を表示</string>
+    <string name="nagashi_mix_upside_down">逆さの札（敵陣）を混ぜる</string>
+    <string name="nagashi_progress">%1$d / %2$d</string>
+    <string name="nagashi_hint">どの方向にでもスワイプ</string>
+    <!-- Keep these two arrays the same length and order -->
+    <string-array name="display_duration_labels">
+        <item>0.05秒</item>
+        <item>0.1秒</item>
+        <item>0.3秒</item>
+        <item>0.5秒</item>
+        <item>1秒</item>
+    </string-array>
+    <integer-array name="display_duration_ms">
+        <item>50</item>
+        <item>100</item>
+        <item>300</item>
+        <item>500</item>
+        <item>1000</item>
+    </integer-array>
+
     <!-- ResultOverlay -->
+    <string name="result_nagashi_count">流した札: %1$d枚</string>
     <string name="result_title">結果</string>
     <string name="result_time">時間: %1$d分%2$02d秒</string>
     <string name="result_taken">取った札: %1$d / %2$d枚</string>

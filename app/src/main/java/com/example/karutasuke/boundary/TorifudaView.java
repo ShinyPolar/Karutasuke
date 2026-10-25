@@ -21,6 +21,7 @@ public class TorifudaView extends View {
     private final FudaCardPainter painter;
     private final RectF bounds = new RectF();
     private List<String> lines = Collections.emptyList();
+    private boolean upsideDown;
 
     public TorifudaView(Context context) { this(context, null); }
 
@@ -36,6 +37,12 @@ public class TorifudaView extends View {
         invalidate();
     }
 
+    /** true draws the card rotated 180°, as an opponent's 札 looks from your seat. */
+    public void setUpsideDown(boolean upsideDown) {
+        this.upsideDown = upsideDown;
+        invalidate();
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = MeasureSpec.getSize(widthMeasureSpec);
@@ -45,6 +52,6 @@ public class TorifudaView extends View {
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
         bounds.set(0, 0, getWidth(), getHeight());
-        painter.draw(canvas, bounds, lines, false, false);
+        painter.draw(canvas, bounds, lines, upsideDown, false);
     }
 }

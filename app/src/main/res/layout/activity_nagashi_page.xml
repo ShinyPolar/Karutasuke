@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nagashi_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".boundary.NagashiPage">
+
+    <!-- Setup step -->
+    <ScrollView
+        android:id="@+id/setup_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open_nagashi_page"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall" />
+
+            <TextView
+                style="@style/FudaDetail.Label"
+                android:text="@string/kikiwake_set" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/set_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="48dp" />
+
+                <TextView
+                    android:id="@+id/set_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    tools:text="100枚" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/FudaDetail.Label"
+                android:text="@string/nagashi_mode" />
+
+            <RadioGroup
+                android:id="@+id/mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/mode_manual">
+
+                <RadioButton
+                    android:id="@+id/mode_manual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nagashi_mode_manual" />
+
+                <RadioButton
+                    android:id="@+id/mode_recognition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nagashi_mode_recognition" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/duration_label"
+                style="@style/FudaDetail.Label"
+                android:text="@string/nagashi_display_duration" />
+
+            <Spinner
+                android:id="@+id/duration_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/kimariji_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:checked="true"
+                android:text="@string/nagashi_show_kimariji" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/upside_down_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:checked="true"
+                android:text="@string/nagashi_mix_upside_down" />
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/kikiwake_start" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Practice -->
+    <FrameLayout
+        android:id="@+id/practice_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/field_tatami"
+        android:visibility="gone">
+
+        <com.example.karutasuke.boundary.SwipeDeckView
+            android:id="@+id/deck"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_margin="16dp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="@color/fuda_ink"
+            tools:text="1 / 100" />
+
+        <Button
+            android:id="@+id/stop_button"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_margin="8dp"
+            android:text="@string/kikiwake_stop"
+            android:textColor="@color/fuda_ink" />
+
+        <TextView
+            android:id="@+id/kimariji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="48dp"
+            android:alpha="0"
+            android:textAppearance="?attr/textAppearanceDisplaySmall"
+            android:textColor="@color/fuda_edge"
+            android:textStyle="bold"
+            tools:alpha="1"
+            tools:text="あさぼらけう" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:text="@string/nagashi_hint"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="@color/field_line" />
+    </FrameLayout>
+
+</FrameLayout>
