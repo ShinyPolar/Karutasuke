@@ -37,6 +37,11 @@
         android:name=".boundary.NagashiPage"
         android:exported="false"
         android:screenOrientation="landscape" />
+        <activity
+        android:name=".boundary.SetEditorPage"
+        android:exported="false"
+        android:label="@string/set_editor_title" />
+
 
     </application>
 

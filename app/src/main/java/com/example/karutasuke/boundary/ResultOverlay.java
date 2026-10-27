@@ -7,6 +7,7 @@ import com.example.karutasuke.entity.FudaAttempt;
 import com.example.karutasuke.entity.PracticeResult;
 import com.example.karutasuke.entity.PracticeType;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,13 +68,15 @@ final class ResultOverlay {
             msg.append('\n').append(activity.getString(R.string.result_slowest, slowest));
         }
 
-        new MaterialAlertDialogBuilder(activity)
+        AlertDialog dialog = new MaterialAlertDialogBuilder(activity)
                 .setTitle(R.string.result_title)
                 .setMessage(msg)
                 .setCancelable(false)
                 .setPositiveButton(R.string.result_retry, (d, w) -> onRetry.run())
                 .setNegativeButton(R.string.result_close, (d, w) -> onClose.run())
                 .show();
+        // No fade-out, so it never covers the first card of a retry.
+        if (dialog.getWindow() != null) dialog.getWindow().setWindowAnimations(0);
     }
 
     private static String formatSeconds(long ms) {

@@ -23,7 +23,6 @@ import androidx.core.view.WindowInsetsControllerCompat;
 import com.example.karutasuke.R;
 import com.example.karutasuke.control.AssetReadingPlayer;
 import com.example.karutasuke.control.FudaCatalog;
-import com.example.karutasuke.control.FudaSetManager;
 import com.example.karutasuke.control.KikiwakeController;
 import com.example.karutasuke.control.TimeController;
 import com.example.karutasuke.entity.Fuda;
@@ -43,6 +42,8 @@ import java.util.Random;
  * Swipe (or tap) a 札 to take it.
  */
 public class KikiwakePage extends AppCompatActivity implements KikiwakeController.Listener {
+
+    private static final int DEFAULT_SET_INDEX = 1;   // 一字決まり: a small field to start with
 
     private List<FudaSet> sets;
     private int[] memorizationSeconds;
@@ -79,7 +80,7 @@ public class KikiwakePage extends AppCompatActivity implements KikiwakeControlle
         });
 
         FudaCatalog catalog = FudaCatalog.getInstance(this);
-        sets = FudaSetManager.getBuiltInSets(catalog);
+        sets = new ArrayList<>();   // filled by reloadSets() in onResume
         memorizationSeconds = getResources().getIntArray(R.array.memorization_seconds);
         player = new AssetReadingPlayer(this);
         controller = new KikiwakeController(catalog, player, this, new Random(), SystemClock::elapsedRealtime);
@@ -107,13 +108,15 @@ public class KikiwakePage extends AppCompatActivity implements KikiwakeControlle
 
     // --- setup step ---
 
+    /** Re-reads the sets, e.g. after returning from the set editor, keeping the current choice. */
+    private void reloadSets() {
+        String keep = SetPicker.selectedId(setSpinner, sets);
+        sets = SetPicker.loadSets(this);
+        SetPicker.bind(setSpinner, sets, keep, DEFAULT_SET_INDEX);
+    }
+
     private void setUpSetupStep() {
-        List<String> names = new ArrayList<>();
-        for (FudaSet s : sets) names.add(s.getName());
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, names);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        setSpinner.setAdapter(adapter);
-        setSpinner.setSelection(1);   // 一字決まり: a small field to start with
+        findViewById(R.id.edit_sets_button).setOnClickListener(v -> SetPicker.openEditor(this));
         setSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -270,6 +273,7 @@ public class KikiwakePage extends AppCompatActivity implements KikiwakeControlle
     protected void onResume() {
         super.onResume();
         if (practicing) controller.resume();
+        else reloadSets();
     }
 
     @Override

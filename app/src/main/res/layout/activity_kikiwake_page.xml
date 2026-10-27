@@ -48,6 +48,13 @@
                     android:layout_marginStart="12dp"
                     android:textAppearance="?attr/textAppearanceBodyMedium"
                     tools:text="7枚" />
+
+                <Button
+                    android:id="@+id/edit_sets_button"
+                    style="?attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/set_edit" />
             </LinearLayout>
 
             <TextView

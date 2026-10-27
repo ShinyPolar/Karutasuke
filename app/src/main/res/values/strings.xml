@@ -86,6 +86,26 @@
     <string name="sort_desc">降順</string>
     <!-- Under each card: 歌番号 and 決まり字 -->
     <string name="fuda_caption">%1$d  %2$s</string>
+    <string name="fuda_caption_selected">✓ %1$d  %2$s</string>
+
+    <!-- SetEditorPage -->
+    <string name="set_editor_title">札セット</string>
+    <string name="set_editor_hint">タップで編集、長押しで名前変更・複製・削除。組み込みのセットはコピーして編集できます。</string>
+    <string name="set_edit">セット編集</string>
+    <string name="set_new">新しいセット</string>
+    <string name="set_rename">名前変更</string>
+    <string name="set_duplicate">複製</string>
+    <string name="set_delete">削除</string>
+    <string name="set_delete_confirm">「%1$s」を削除しますか？</string>
+    <string name="set_done">完了</string>
+    <string name="set_clear">すべて解除</string>
+    <string name="set_name_hint">セット名</string>
+    <string name="set_name_empty">名前を入力してください</string>
+    <string name="set_selected_count">%1$d枚選択</string>
+    <string name="set_info_user">%1$d枚</string>
+    <string name="set_info_builtin">%1$d枚・組み込み</string>
+    <string name="set_builtin_message">組み込みのセットは編集できません。コピーを作って編集しますか？</string>
+    <string name="set_copy_and_edit">コピーして編集</string>
 
     <!-- FudaDetailPage -->
     <string name="detail_number">第%1$d首</string>

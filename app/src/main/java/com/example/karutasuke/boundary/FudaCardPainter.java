@@ -82,7 +82,7 @@ final class FudaCardPainter {
             }
         }
 
-    
+
 
         if (wrong) canvas.drawRoundRect(card, corner, corner, highlightPaint);
         canvas.restore();

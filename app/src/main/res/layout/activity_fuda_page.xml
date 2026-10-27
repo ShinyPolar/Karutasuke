@@ -38,6 +38,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             tools:text="@string/sort_asc" />
+
+        <Button
+            android:id="@+id/edit_sets_button"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/set_edit" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

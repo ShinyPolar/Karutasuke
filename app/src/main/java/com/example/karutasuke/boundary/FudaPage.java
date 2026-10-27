@@ -77,6 +77,8 @@ public class FudaPage extends AppCompatActivity {
             refresh();
         });
 
+        findViewById(R.id.edit_sets_button).setOnClickListener(v -> SetPicker.openEditor(this));
+
         refresh();
     }
 

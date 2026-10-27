@@ -20,8 +20,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.karutasuke.R;
-import com.example.karutasuke.control.FudaCatalog;
-import com.example.karutasuke.control.FudaSetManager;
 import com.example.karutasuke.control.NagashiController;
 import com.example.karutasuke.entity.Fuda;
 import com.example.karutasuke.entity.FudaSet;
@@ -40,8 +38,11 @@ import java.util.Random;
  */
 public class NagashiPage extends AppCompatActivity implements NagashiController.Listener {
 
+    private static final int DEFAULT_SET_INDEX = 0;   // 全札
     private static final long KIMARIJI_SHOW_MS = 1200;
     private static final long KIMARIJI_FADE_MS = 300;
+    private static final long RETRY_DELAY_MS = 300;
+
 
     private final Handler handler = new Handler(Looper.getMainLooper());
     private List<FudaSet> sets;
@@ -75,7 +76,7 @@ public class NagashiPage extends AppCompatActivity implements NagashiController.
             return insets;
         });
 
-        sets = FudaSetManager.getBuiltInSets(FudaCatalog.getInstance(this));
+        sets = new ArrayList<>();   // filled by reloadSets() in onResume
         durationsMs = getResources().getIntArray(R.array.display_duration_ms);
         controller = new NagashiController(this, new Random(), SystemClock::elapsedRealtime);
 
@@ -100,12 +101,15 @@ public class NagashiPage extends AppCompatActivity implements NagashiController.
 
     // --- setup step ---
 
+    /** Re-reads the sets, e.g. after returning from the set editor, keeping the current choice. */
+    private void reloadSets() {
+        String keep = SetPicker.selectedId(setSpinner, sets);
+        sets = SetPicker.loadSets(this);
+        SetPicker.bind(setSpinner, sets, keep, DEFAULT_SET_INDEX);
+    }
+
     private void setUpSetupStep() {
-        List<String> names = new ArrayList<>();
-        for (FudaSet s : sets) names.add(s.getName());
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, names);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        setSpinner.setAdapter(adapter);
+        findViewById(R.id.edit_sets_button).setOnClickListener(v -> SetPicker.openEditor(this));
         setSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -208,8 +212,14 @@ public class NagashiPage extends AppCompatActivity implements NagashiController.
         deck.setInteractive(false);
         if (isFinishing() || isDestroyed()) return;
         ResultOverlay.show(this, result, result.getAttempts().size(),
-                () -> startPractice(lastConfig),
+                () -> handler.postDelayed(() -> startPractice(lastConfig), RETRY_DELAY_MS),
                 this::showSetup);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (setupPanel.getVisibility() == View.VISIBLE) reloadSets();
     }
 
     @Override
